@@ -1,0 +1,76 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#100d14">
+  <title>ZERO CHEATS OFFICIAL</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="ambient ambient-one"></div><div class="ambient ambient-two"></div>
+  <header class="topbar">
+    <a class="brand" href="#"><span class="brand-mark">Z</span><span>ZERO <b>CHEATS</b><small>OFFICIAL STORE</small></span></a>
+    <div class="top-status"><span class="pill online"><i></i> STORE ONLINE</span><span class="pill instant"><i></i> DIGITAL DELIVERY</span></div>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="eyebrow"><span></span> PREMIUM DIGITAL STORE</div>
+      <h1>ZERO CHEATS<br><em>OFFICIAL</em></h1>
+      <p>Choose your product, select a plan, and submit your payment details for order review.</p>
+      <a class="hero-cta" href="#products">EXPLORE PRODUCTS <span>↘</span></a>
+      <div class="hero-orbit orbit-a"></div><div class="hero-orbit orbit-b"></div>
+    </section>
+
+    <section class="section-head" id="products">
+      <div><div class="eyebrow">THE COLLECTION</div><h2>Available <em>Products</em></h2></div>
+      <span class="catalog-count">05 CATEGORIES</span>
+    </section>
+    <section class="product-grid" id="productGrid"></section>
+
+    <section class="notice">
+      <span class="notice-icon">i</span>
+      <div><strong>Order review</strong><p>Submit the correct transaction details and a clear payment screenshot. Orders are not confirmed until reviewed by the store owner.</p></div>
+    </section>
+  </main>
+
+  <footer><a class="brand footer-brand" href="#"><span class="brand-mark">Z</span><span>ZERO <b>CHEATS</b><small>OFFICIAL STORE</small></span></a><span>© <span id="year"></span> ZERO CHEATS OFFICIAL</span></footer>
+
+  <div class="modal-backdrop" id="modalBackdrop" aria-hidden="true">
+    <section class="order-modal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+      <button class="close-modal" id="closeModal" aria-label="Close">×</button>
+      <div class="modal-header"><div class="eyebrow">SECURE ORDER REQUEST</div><h2 id="modalTitle">Complete your <em>order</em></h2><p id="selectedSummary">Selected product</p></div>
+      <div class="order-layout">
+        <aside class="payment-options">
+          <div class="field-label">PAYMENT METHOD</div>
+          <button type="button" class="payment-option active" data-method="bKash"><span class="payment-symbol bkash">b</span><span><b>bKash</b><small>Mobile payment</small></span><span class="checkmark">✓</span></button>
+          <button type="button" class="payment-option" data-method="Nagad"><span class="payment-symbol nagad">N</span><span><b>Nagad</b><small>Mobile payment</small></span><span class="checkmark">✓</span></button>
+          <div class="safe-note">Never share your PIN or OTP.</div>
+        </aside>
+        <form id="orderForm">
+          <div class="pay-instruction"><span>PAY TO <b id="methodLabel">bKash</b></span><strong id="paymentNumber">ADD_YOUR_BKASH_NUMBER</strong><small>Replace this placeholder in <code>script.js</code> before publishing.</small></div>
+          <div class="form-row">
+            <label class="field-label" for="last4">TRANSACTION LAST 4 DIGITS</label>
+            <input id="last4" name="last4" inputmode="numeric" pattern="[0-9]{4}" maxlength="4" placeholder="e.g. 4821" required>
+          </div>
+          <div class="form-row">
+            <label class="field-label" for="discord">DISCORD USERNAME</label>
+            <input id="discord" name="discord" maxlength="80" placeholder="username or username#0000" required>
+          </div>
+          <div class="form-row">
+            <label class="field-label" for="screenshot">PAYMENT SCREENSHOT</label>
+            <input id="screenshot" name="screenshot" type="file" accept="image/*" required>
+            <small class="field-hint">Image only. Do not upload screenshots containing PINs or OTPs.</small>
+          </div>
+          <label class="agree"><input type="checkbox" id="confirm" required> I confirm that the payment details I entered are correct.</label>
+          <button class="submit-order" type="submit">SUBMIT ORDER REQUEST <span>↗</span></button>
+          <p class="form-feedback" id="formFeedback" role="status"></p>
+        </form>
+      </div>
+      <p class="modal-footnote">Demo form: connect a secure backend to deliver orders to your private Discord channel.</p>
+    </section>
+  </div>
+  <script src="script.js"></script>
+</body>
+</html>
