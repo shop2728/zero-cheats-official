@@ -94,17 +94,19 @@ document.getElementById("orderForm").addEventListener("submit", async e=>{
     "Content-Type": "application/json"
   },
   body: JSON.stringify({
-  content:
-`🛒 NEW ORDER
+ const message = `🛒 NEW ORDER
 
 📦 Product: ${details.product}
 📅 Duration: ${details.duration}
 💰 Price: ৳${details.price}
 💳 Payment: ${details.paymentMethod}
-🔢 Last 4 Digit: ${details.transactionLast4}
-👤 Discord: ${details.discordUsername}
-📸 Screenshot: ${details.screenshotFileName}`
-  })
-});
+👤 Discord: ${details.discordUsername}`;
+
+const whatsapp = "8801410242259"; // দেশের কোডসহ নম্বর
+
+window.open(
+  `https://wa.me/${whatsapp}?text=${encodeURIComponent(message)}`,
+  "_blank"
+);
   document.getElementById("formFeedback").textContent="Demo only: the form works visually, but it is not sending your order yet. Connect a secure backend before publishing.";
 });
