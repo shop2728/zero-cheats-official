@@ -88,12 +88,9 @@ document.getElementById("orderForm").addEventListener("submit", async e=>{
     screenshotFileName:file.name
   };
   console.log("Demo order request (not sent anywhere):",details);
-  fetch("https://discordapp.com/api/webhooks/1559751800175857806/ciOsY9Q7e0eLK3xmej2V8tflKxc0PjOOrJcqiorVA57dYHfgluG0tZ4MiTreSFlFK1Vd", {
-  method: "POST",
-  headers: {
-    "Content-Type": "application/json"
-  },
-  body: JSON.stringify({
+  const formData = new FormData();
+
+formData.append("payload_json", JSON.stringify({
   content:
 `🛒 NEW ORDER
 
@@ -102,9 +99,19 @@ document.getElementById("orderForm").addEventListener("submit", async e=>{
 💰 Price: ৳${details.price}
 💳 Payment: ${details.paymentMethod}
 🔢 Last 4 Digit: ${details.transactionLast4}
-👤 Discord: ${details.discordUsername}
-📸 Screenshot: ${details.screenshotFileName}`
-  })
+👤 Discord: ${details.discordUsername}`
+}));
+
+formData.append("files[0]", file, file.name);
+
+const response = await fetch("https://discordapp.com/api/webhooks/1559877363485909034/oaxl_C4EhMP50HYSfnEBj4HTgwOKjFr_j-p3mRVoDeGpVL1khbByeWyalJmy90y5rrbB", {
+  method: "POST",
+  body: formData
+});
+
+if (!response.ok) {
+  throw new Error("Discord upload failed");
+})
 });
   document.getElementById("formFeedback").textContent="Demo only: the form works visually, but it is not sending your order yet. Connect a secure backend before publishing.";
 });
