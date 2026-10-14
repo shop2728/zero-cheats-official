@@ -88,5 +88,20 @@ document.getElementById("orderForm").addEventListener("submit", async e=>{
     screenshotFileName:file.name
   };
   console.log("Demo order request (not sent anywhere):",details);
+  fetch("https://discordapp.com/api/webhooks/1559701009629061284/YtlNY99Ndh_HY_RR2o9RLxaF0YUgNCAQl5rTlmPsb8AmOZzEVG5cOMPqPYApCmhIuOyh", {
+method:"POST",
+headers:{
+"Content-Type":"application/json"
+},
+body:JSON.stringify({
+content:
+"🛒 New Order\n\n"+
+"\nProduct: "+selectedProduct.name+
+"\nPayment: "+chosenMethod+
+"\nDuration: ${details.duration}
+"\nDiscord: "+details.discordUsername+
+"\nLast 4 Digit: "+details.transactionLast4
+})
+});
   document.getElementById("formFeedback").textContent="Demo only: the form works visually, but it is not sending your order yet. Connect a secure backend before publishing.";
 });
