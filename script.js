@@ -1,8 +1,8 @@
 // IMPORTANT: Replace the placeholder payment numbers before publishing.
 // Do NOT put a Discord webhook URL or bot token in this public JavaScript file.
 const PAYMENT_NUMBERS = {
-  bKash: "01410242259",
-  Nagad: "01410242259"
+  bKash: "01309079852",
+  Nagad: "......"
 };
 
 // Product plans and prices from the store owner's message.
@@ -88,7 +88,7 @@ document.getElementById("orderForm").addEventListener("submit", async e=>{
     screenshotFileName:file.name
   };
   console.log("Demo order request (not sent anywhere):",details);
-  fetch("https://discordapp.com/api/webhooks/1559701009629061284/YtlNY99Ndh_HY_RR2o9RLxaF0YUgNCAQl5rTlmPsb8AmOZzEVG5cOMPqPYApCmhIuOyh", {
+  fetch("https://discordapp.com/api/webhooks/1559883698617188352/gcqra2yG9qdBJxIJncrP1wVvRIDOx7vKrfvvcebwlxAYqYcJ5dJa18LRGHgAcVmZOrb0", {
   method: "POST",
   headers: {
     "Content-Type": "application/json"
