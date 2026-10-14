@@ -107,5 +107,4 @@ content:
 📸 Screenshot: ${details.screenshotFileName}`
   })
 });
-  document.getElementById("formFeedback").textContent="Demo only: the form works visually, but it is not sending your order yet. Connect a secure backend before publishing.";
-});
+  
