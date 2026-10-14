@@ -88,16 +88,18 @@ document.getElementById("orderForm").addEventListener("submit", async e=>{
     screenshotFileName:file.name
   };
   console.log("Demo order request (not sent anywhere):",details);
-  fetch("https://discordapp.com/api/webhooks/1559701009629061284/YtlNY99Ndh_HY_RR2o9RLxaF0YUgNCAQl5rTlmPsb8AmOZzEVG5cOMPqPYApCmhIuOyh", {
+  fetch("https://discordapp.com/api/webhooks/1559748409777324064/dhd-aJE7K_RQ93izbs_H0PjMOD5DLstSAG0cHWKSae_pEHApximLzAn_97bLDqXwupND", {
   method: "POST",
   headers: {
     "Content-Type": "application/json"
   },
   body: JSON.stringify({
-    content:
+  content:
 `🛒 NEW ORDER
 
-📦 Product: ${details.name}
+📦 Product: ${details.product}
+📅 Duration: ${details.duration}
+💰 Price: ৳${details.price}
 💳 Payment: ${details.paymentMethod}
 🔢 Last 4 Digit: ${details.transactionLast4}
 👤 Discord: ${details.discordUsername}
