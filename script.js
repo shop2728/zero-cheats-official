@@ -1,8 +1,8 @@
 // IMPORTANT: Replace the placeholder payment numbers before publishing.
 // Do NOT put a Discord webhook URL or bot token in this public JavaScript file.
 const PAYMENT_NUMBERS = {
-  bKash: "01410242259",
-  Nagad: "01410242259"
+  bKash: "01309079852",
+  Nagad: "....."
 };
 
 // Product plans and prices from the store owner's message.
