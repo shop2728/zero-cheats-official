@@ -102,14 +102,14 @@ document.getElementById("orderForm").addEventListener("submit", async e=>{
 💳 Payment: ${details.paymentMethod}
 👤 Discord: ${details.discordUsername}`;
 
-const whatsapp = "8801410242259"; // দেশের কোডসহ নম্বর
+const whatsapp = "8801410242259"; 
 
 window.open(
   `https://wa.me/${whatsapp}?text=${encodeURIComponent(message)}`,
   "_blank"
 );
   document.getElementById("formFeedback").textContent="Demo only: the form works visually, but it is not sending your order yet. Connect a secure backend before publishing.";
-});
+};
     const copyBtn = document.getElementById("copyPaymentNumber");
 const copyFeedback = document.getElementById("copyFeedback");
 
