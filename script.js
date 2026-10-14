@@ -18,16 +18,16 @@ let chosenMethod = "bKash";
 let selectedProduct = null;
 
 const grid = document.getElementById("productGrid");
-const taka = n => `৳${n}`;
+const taka = n => ৳${n};
 products.forEach((product, index) => {
   const card = document.createElement("article");
   card.className = "product-card";
-  card.style.animationDelay = `${index * 75}ms`;
+  card.style.animationDelay = ${index * 75}ms;
   card.innerHTML = `
     <div class="product-art"><span class="art-label">${product.label}</span><div class="art-symbol">${product.symbol}</div><span class="art-index">0${index+1} / ZERO</span></div>
     <div class="product-info"><h3>${product.name}</h3><p>${product.description}</p>
       <div class="plans" role="group" aria-label="${product.name} plans">
-        ${product.plans.map((plan,i)=>`<button type="button" class="plan ${i===0?'selected':''}" data-index="${i}">${plan[0]} <b>${taka(plan[1])}</b></button>`).join("")}
+        ${product.plans.map((plan,i)=><button type="button" class="plan ${i===0?'selected':''}" data-index="${i}">${plan[0]} <b>${taka(plan[1])}</b></button>).join("")}
       </div>
       <button class="buy-button" type="button">BUY NOW <span>↗</span></button>
     </div>`;
@@ -44,7 +44,7 @@ products.forEach((product, index) => {
 const backdrop = document.getElementById("modalBackdrop");
 function openOrder(product, plan) {
   selectedProduct = {product:product.name, duration:plan[0], price:plan[1]};
-  document.getElementById("selectedSummary").textContent = `${product.name} · ${plan[0]} · ${taka(plan[1])}`;
+  document.getElementById("selectedSummary").textContent = ${product.name} · ${plan[0]} · ${taka(plan[1])};
   document.getElementById("formFeedback").textContent = "";
   backdrop.classList.add("open");
   backdrop.setAttribute("aria-hidden","false");
@@ -95,9 +95,12 @@ document.getElementById("orderForm").addEventListener("submit", async e=>{
   },
   body: JSON.stringify({
     content:
+content:
 `🛒 NEW ORDER
 
-📦 Product: ${details.name}
+📦 Product: ${details.product}
+📅 Duration: ${details.duration}
+💰 Price: ৳${details.price}
 💳 Payment: ${details.paymentMethod}
 🔢 Last 4 Digit: ${details.transactionLast4}
 👤 Discord: ${details.discordUsername}
