@@ -108,26 +108,44 @@ document.getElementById("orderForm").addEventListener("submit", async e=>{
 });
   document.getElementById("formFeedback").textContent="Demo only: the form works visually, but it is not sending your order yet. Connect a secure backend before publishing.";
 });
-const copyBtn = document.getElementById("copyPaymentNumber");
-const copyFeedback = document.getElementById("copyFeedback");
+document.addEventListener("click", async function (event) {
+  const btn = event.target.closest("#copyPaymentNumber");
+  if (!btn) return;
 
-if (copyBtn) {
-  copyBtn.addEventListener("click", async () => {
-    const number = document.getElementById("paymentNumber").textContent.trim();
+  const numberElement = document.getElementById("paymentNumber");
 
-    if (!number || number === ".....") {
-      if (copyFeedback) copyFeedback.textContent = "Payment number not set!";
-      return;
-    }
+  if (!numberElement) {
+    alert("Payment number element not found!");
+    return;
+  }
 
-    try {
+  const number = numberElement.textContent.trim();
+
+  if (!number || number === ".....") {
+    alert("Payment number is not set!");
+    return;
+  }
+
+  try {
+    if (navigator.clipboard && window.isSecureContext) {
       await navigator.clipboard.writeText(number);
-      copyBtn.textContent = "COPIED ✓";
-      if (copyFeedback) copyFeedback.textContent = "Number copied successfully!";
-    } catch (error) {
-      if (copyFeedback) {
-        copyFeedback.textContent = "Copy blocked. Open the site using HTTPS.";
-      }
+    } else {
+      const input = document.createElement("textarea");
+      input.value = number;
+      input.style.position = "fixed";
+      input.style.left = "-9999px";
+      document.body.appendChild(input);
+      input.select();
+
+      const success = document.execCommand("copy");
+      input.remove();
+
+      if (!success) throw new Error("Copy failed");
     }
-  });
-}
+
+    btn.textContent = "COPIED ✓";
+    alert("Number copied: " + number);
+  } catch (error) {
+    alert("Copy failed! Number manually select kore copy koro.");
+  }
+});
