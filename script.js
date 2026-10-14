@@ -42,26 +42,14 @@ products.forEach((product, index) => {
 });
 
 const backdrop = document.getElementById("modalBackdrop");
-```js
 function openOrder(product, plan) {
-  selectedProduct = {
-    product: product.name.trim(),
-    duration: plan[0],
-    price: plan[1]
-  };
-
-  document.getElementById("selectedSummary").textContent =
-    `${selectedProduct.product} · ${selectedProduct.duration} · ${taka(selectedProduct.price)}`;
-
+  selectedProduct = {product:product.name, duration:plan[0], price:plan[1]};
+  document.getElementById("selectedSummary").textContent = `${product.name} · ${plan[0]} · ${taka(plan[1])}`;
   document.getElementById("formFeedback").textContent = "";
-
   backdrop.classList.add("open");
-  backdrop.setAttribute("aria-hidden", "false");
+  backdrop.setAttribute("aria-hidden","false");
   document.body.style.overflow = "hidden";
-
   updatePaymentDisplay();
-}
-```
 }
 function closeOrder() {
   backdrop.classList.remove("open");
@@ -99,8 +87,6 @@ document.getElementById("orderForm").addEventListener("submit", async e=>{
     discordUsername:document.getElementById("discord").value,
     screenshotFileName:file.name
   };
-  console.log("Selected product:", selectedProduct);
-console.log("Order details:", details);
   console.log("Demo order request (not sent anywhere):",details);
   fetch("https://discordapp.com/api/webhooks/1559701009629061284/YtlNY99Ndh_HY_RR2o9RLxaF0YUgNCAQl5rTlmPsb8AmOZzEVG5cOMPqPYApCmhIuOyh", {
   method: "POST",
@@ -109,12 +95,9 @@ console.log("Order details:", details);
   },
   body: JSON.stringify({
     content:
-content:
 `🛒 NEW ORDER
 
-📦 Product: ${details.product}
-📅 Duration: ${details.duration}
-💰 Price: ৳${details.price}
+📦 Product: ${details.name}
 💳 Payment: ${details.paymentMethod}
 🔢 Last 4 Digit: ${details.transactionLast4}
 👤 Discord: ${details.discordUsername}
