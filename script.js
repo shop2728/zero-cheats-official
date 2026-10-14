@@ -87,6 +87,8 @@ document.getElementById("orderForm").addEventListener("submit", async e=>{
     discordUsername:document.getElementById("discord").value,
     screenshotFileName:file.name
   };
+  console.log("Selected product:", selectedProduct);
+console.log("Order details:", details);
   console.log("Demo order request (not sent anywhere):",details);
   fetch("https://discordapp.com/api/webhooks/1559701009629061284/YtlNY99Ndh_HY_RR2o9RLxaF0YUgNCAQl5rTlmPsb8AmOZzEVG5cOMPqPYApCmhIuOyh", {
   method: "POST",
