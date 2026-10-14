@@ -97,7 +97,8 @@ document.getElementById("orderForm").addEventListener("submit", async e=>{
     content:
 `🛒 NEW ORDER
 
-📦 Product: ${selectedProduct.name}
+📦 Product: ${details.Product}
+📅 Duration: ${details.duration}
 💳 Payment: ${details.paymentMethod}
 🔢 Last 4 Digit: ${details.transactionLast4}
 👤 Discord: ${details.discordUsername}
