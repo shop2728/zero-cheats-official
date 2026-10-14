@@ -42,14 +42,26 @@ products.forEach((product, index) => {
 });
 
 const backdrop = document.getElementById("modalBackdrop");
+```js
 function openOrder(product, plan) {
-  selectedProduct = {product:product.name, duration:plan[0], price:plan[1]};
-  document.getElementById("selectedSummary").textContent = `${product.name} · ${plan[0]} · ${taka(plan[1])}`;
+  selectedProduct = {
+    product: product.name.trim(),
+    duration: plan[0],
+    price: plan[1]
+  };
+
+  document.getElementById("selectedSummary").textContent =
+    `${selectedProduct.product} · ${selectedProduct.duration} · ${taka(selectedProduct.price)}`;
+
   document.getElementById("formFeedback").textContent = "";
+
   backdrop.classList.add("open");
-  backdrop.setAttribute("aria-hidden","false");
+  backdrop.setAttribute("aria-hidden", "false");
   document.body.style.overflow = "hidden";
+
   updatePaymentDisplay();
+}
+```
 }
 function closeOrder() {
   backdrop.classList.remove("open");
