@@ -95,9 +95,12 @@ document.getElementById("orderForm").addEventListener("submit", async e=>{
   },
   body: JSON.stringify({
     content:
+content:
 `🛒 NEW ORDER
 
-📦 Product: ${details.name}
+📦 Product: ${details.product}
+📅 Duration: ${details.duration}
+💰 Price: ৳${details.price}
 💳 Payment: ${details.paymentMethod}
 🔢 Last 4 Digit: ${details.transactionLast4}
 👤 Discord: ${details.discordUsername}
