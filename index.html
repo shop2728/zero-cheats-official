@@ -51,6 +51,8 @@
         <form id="orderForm">
           <div class="pay-instruction"><span>PAY TO <b id="methodLabel">bKash</b></span><strong id="paymentNumber">ADD_YOUR_BKASH_NUMBER</strong><small>Replace this placeholder in <code>script.js</code> before publishing.</small></div>
           <div class="form-row">
+            <button type="button" id="copyPaymentNumber" class="copy-payment-btn">COPY</button>
+               <small id="copyFeedback" role="status"></small>
             <label class="field-label" for="last4">TRANSACTION LAST 4 DIGITS</label>
             <input id="last4" name="last4" inputmode="numeric" pattern="[0-9]{4}" maxlength="4" placeholder="e.g. 4821" required>
           </div>
