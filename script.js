@@ -108,3 +108,26 @@ document.getElementById("orderForm").addEventListener("submit", async e=>{
 });
   document.getElementById("formFeedback").textContent="Demo only: the form works visually, but it is not sending your order yet. Connect a secure backend before publishing.";
 });
+const copyBtn = document.getElementById("copyPaymentNumber");
+const copyFeedback = document.getElementById("copyFeedback");
+
+copyBtn.addEventListener("click", async () => {
+  const number = document.getElementById("paymentNumber").textContent.trim();
+
+  if (!number || number.startsWith("ADD_YOUR_") || number === ".....") {
+    copyFeedback.textContent = "Please set your payment number first.";
+    return;
+  }
+
+  try {
+    await navigator.clipboard.writeText(number);
+    copyBtn.textContent = "COPIED ✓";
+    copyFeedback.textContent = "Number copied successfully!";
+
+    setTimeout(() => {
+      copyBtn.textContent = "COPY";
+    }, 2000);
+  } catch {
+    copyFeedback.textContent = "Copy failed. Please copy the number manually.";
+  }
+});
