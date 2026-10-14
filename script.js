@@ -104,7 +104,7 @@ formData.append("payload_json", JSON.stringify({
 
 formData.append("files[0]", file, file.name);
 
-const response = await fetch("https://discordapp.com/api/webhooks/1559877363485909034/oaxl_C4EhMP50HYSfnEBj4HTgwOKjFr_j-p3mRVoDeGpVL1khbByeWyalJmy90y5rrbB", {
+const response = await fetch("https://discordapp.com/api/webhooks/1559878321788035163/5QM1R3B3uwdx5fR9JoMSKQM1al8ZMO17G8s-mwPe-XesLpIhuVu-WDoEg46iOMgWuzAm", {
   method: "POST",
   body: formData
 });
