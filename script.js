@@ -1,8 +1,8 @@
 // IMPORTANT: Replace the placeholder payment numbers before publishing.
 // Do NOT put a Discord webhook URL or bot token in this public JavaScript file.
 const PAYMENT_NUMBERS = {
-  bKash: "01410242259",
-  Nagad: "01410242259"
+  bKash: "01309079852",
+  Nagad: ""
 };
 
 // Product plans and prices from the store owner's message.
@@ -88,21 +88,66 @@ document.getElementById("orderForm").addEventListener("submit", async e=>{
     screenshotFileName:file.name
   };
   console.log("Demo order request (not sent anywhere):",details);
-  fetch("https://discordapp.com/api/webhooks/1559701009629061284/YtlNY99Ndh_HY_RR2o9RLxaF0YUgNCAQl5rTlmPsb8AmOZzEVG5cOMPqPYApCmhIuOyh", {
+  fetch("", {
   method: "POST",
   headers: {
     "Content-Type": "application/json"
   },
   body: JSON.stringify({
-    content:
+  content:
 `🛒 NEW ORDER
 
-📦 Product: ${details.name}
+📦 Product: ${details.product}
+📅 Duration: ${details.duration}
+💰 Price: ৳${details.price}
 💳 Payment: ${details.paymentMethod}
 🔢 Last 4 Digit: ${details.transactionLast4}
 👤 Discord: ${details.discordUsername}
 📸 Screenshot: ${details.screenshotFileName}`
-  })
+})
 });
   document.getElementById("formFeedback").textContent="Demo only: the form works visually, but it is not sending your order yet. Connect a secure backend before publishing.";
 });
+const copyBtn = document.getElementById("copyPaymentNumber");
+const copyFeedback = document.getElementById("copyFeedback");
+
+if (copyBtn) {
+  copyBtn.addEventListener("click", async () => {
+    const number = document
+      .getElementById("paymentNumber")
+      .textContent.trim();
+
+    if (!number || number.includes("ADD_YOUR_") || number === ".....") {
+      copyFeedback.textContent = "Payment number not set!";
+      return;
+    }
+
+    try {
+      if (navigator.clipboard && window.isSecureContext) {
+        await navigator.clipboard.writeText(number);
+      } else {
+        const input = document.createElement("textarea");
+        input.value = number;
+        input.style.position = "fixed";
+        input.style.left = "-9999px";
+        document.body.appendChild(input);
+        input.select();
+
+        const success = document.execCommand("copy");
+        input.remove();
+
+        if (!success) throw new Error("Copy failed");
+      }
+
+      copyBtn.textContent = "COPIED ✓";
+      copyFeedback.textContent = "Number copied successfully!";
+
+      setTimeout(() => {
+        copyBtn.textContent = "COPY";
+      }, 2000);
+    } catch (error) {
+      copyFeedback.textContent =
+        "Copy failed! Please copy the number manually.";
+    }
+  });
+}
