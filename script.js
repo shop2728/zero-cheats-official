@@ -1,18 +1,18 @@
 // IMPORTANT: Replace the placeholder payment numbers before publishing.
 // Do NOT put a Discord webhook URL or bot token in this public JavaScript file.
 const PAYMENT_NUMBERS = {
-  bKash: "ADD_YOUR_BKASH_NUMBER",
-  Nagad: "ADD_YOUR_NAGAD_NUMBER"
+  bKash: "0110242259",
+  Nagad: "014102422"
 };
 
 // Product plans and prices from the store owner's message.
 const products = [
-  {name:"BR Mood", symbol:"BR", label:"POPULAR", description:"Choose a duration that matches your order.", plans:[["1 day",35],["10 days",90],["15 days",150],["30 days",200],["1 year",1500],["Permanent",2500]]},
-  {name:"Fake Lag", symbol:"FL", label:"DIGITAL", description:"Duration-based digital product listing.", plans:[["1 month",350],["Lifetime",1500]]},
+  {name:"BR Mood pc", symbol:"BR MOOD", label:"POPULAR", description:"Choose a duration that matches your order.", plans:[["1 day",35],["10 days",90],["15 days",150],["30 days",200],["1 year",1500],["Permanent",2500]]},
+  {name:"Fake Lag pc ", symbol:"FL", label:"DIGITAL", description:"Duration-based digital product listing.", plans:[["1 month",350],["Lifetime",1500]]},
   {name:"BR Mood Bypass", symbol:"BP", label:"BYPASS", description:"Select a listed duration to continue to checkout.", plans:[["7 days",220],["30 days",410]]},
-  {name:"Dustu A.K", symbol:"AK", label:"FEATURED", description:"Choose one of the available plans below.", plans:[["7 days",400],["30 days",650]]},
-  {name:"Emote", symbol:"EM", label:"EMOTE", description:"Digital emote product with flexible durations.", plans:[["1 day",30],["7 days",150],["30 days",300]]},
-  {name:"Mod Menu Ultra PC", symbol:"PC", label:"PC", description:"PC digital product listing.", plans:[["7 days",350],["30 days",600]]}
+  {name:"Dustu Aim kill", symbol:"AIM KILL", label:"FEATURED", description:"Choose one of the available plans below.", plans:[["7 days",400],["30 days",650]]},
+  {name:"Emote", symbol:"EMOTE PANEL", label:"EMOTE", description:"Digital emote product with flexible durations.", plans:[["1 day",30],["7 days",150],["30 days",300]]},
+  {name:"Mod Menu Ultra PC", symbol:",OD MENU", label:"PC", description:"PC digital product listing.", plans:[["7 days",350],["30 days",600]]}
 ];
 let chosenMethod = "bKash";
 let selectedProduct = null;
