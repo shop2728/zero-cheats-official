@@ -111,23 +111,43 @@ document.getElementById("orderForm").addEventListener("submit", async e=>{
 const copyBtn = document.getElementById("copyPaymentNumber");
 const copyFeedback = document.getElementById("copyFeedback");
 
-copyBtn.addEventListener("click", async () => {
-  const number = document.getElementById("paymentNumber").textContent.trim();
+if (copyBtn) {
+  copyBtn.addEventListener("click", async () => {
+    const number = document
+      .getElementById("paymentNumber")
+      .textContent.trim();
 
-  if (!number || number.startsWith("ADD_YOUR_") || number === ".....") {
-    copyFeedback.textContent = "Please set your payment number first.";
-    return;
-  }
+    if (!number || number.includes("ADD_YOUR_") || number === ".....") {
+      copyFeedback.textContent = "Payment number not set!";
+      return;
+    }
 
-  try {
-    await navigator.clipboard.writeText(number);
-    copyBtn.textContent = "COPIED ✓";
-    copyFeedback.textContent = "Number copied successfully!";
+    try {
+      if (navigator.clipboard && window.isSecureContext) {
+        await navigator.clipboard.writeText(number);
+      } else {
+        const input = document.createElement("textarea");
+        input.value = number;
+        input.style.position = "fixed";
+        input.style.left = "-9999px";
+        document.body.appendChild(input);
+        input.select();
 
-    setTimeout(() => {
-      copyBtn.textContent = "COPY";
-    }, 2000);
-  } catch {
-    copyFeedback.textContent = "Copy failed. Please copy the number manually.";
-  }
-});
+        const success = document.execCommand("copy");
+        input.remove();
+
+        if (!success) throw new Error("Copy failed");
+      }
+
+      copyBtn.textContent = "COPIED ✓";
+      copyFeedback.textContent = "Number copied successfully!";
+
+      setTimeout(() => {
+        copyBtn.textContent = "COPY";
+      }, 2000);
+    } catch (error) {
+      copyFeedback.textContent =
+        "Copy failed! Please copy the number manually.";
+    }
+  });
+}
