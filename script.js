@@ -95,16 +95,14 @@ document.getElementById("orderForm").addEventListener("submit", async e=>{
   },
   body: JSON.stringify({
     content:
-content:
 `🛒 NEW ORDER
 
-📦 Product: ${details.product}
-📅 Duration: ${details.duration}
-💰 Price: ৳${details.price}
+📦 Product: ${details.name}
 💳 Payment: ${details.paymentMethod}
 🔢 Last 4 Digit: ${details.transactionLast4}
 👤 Discord: ${details.discordUsername}
 📸 Screenshot: ${details.screenshotFileName}`
   })
 });
-  
+  document.getElementById("formFeedback").textContent="Demo only: the form works visually, but it is not sending your order yet. Connect a secure backend before publishing.";
+});
